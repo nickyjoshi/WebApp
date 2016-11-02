@@ -1,4 +1,5 @@
 angular.module('App.Service',['App.Factory'])
+.constant('APILocal','http://localhost:9081')
 .constant('API', 'http://test-routes.herokuapp.com')
 .constant('headerContent',{'Content-Type':'application/x-www-form-urlencoded;charset=utf-8;'})
 .service('authService', ["$window", function($window){
@@ -51,5 +52,10 @@ angular.module('App.Service',['App.Factory'])
         var config = {headers : headerContent}
         var promiseObject = $http.post((API + '/auth/login'), data, config)
         return promiseObject;
+    }
+}])
+.service('exerciseService',["$http", "APILocal", "headerContent", function($http, APILocal, headerContent){
+    this.getExercises = function(){
+        return $http.get(APILocal + '/exercises')
     }
 }]);

@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+            <h1>Prototype App</h1>
+        </div>
+
+        <div class="container">
+            <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="main.username" class="form-control" placeholder="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" ng-model="main.password" class="form-control" placeholder="password">
+                </div>
+            </div>
+
+            <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10">
+            <button ng-click="main.register()" class="btn btn-default">Register</button>
+            <button ng-click="main.login()" class="btn btn-default">Login</button>
+            <button ng-click="main.logout()" ng-show="main.isAuthed()" class="btn btn-default">Logout</button>
+            <button ng-click="main.getQuote()" class="btn btn-default">get quote</button>
+            <a ui-sref="list" ><button ng-click="main.getExercises()" class="btn btn-default">get exercises</button></a>
+            
+                </div>
+            </div>
+            </form>
+        <br>
+        <br>
+        {{main.message}}
+        <br>
+        <br>

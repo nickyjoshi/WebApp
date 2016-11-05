@@ -33,27 +33,17 @@ angular.module('app',['App.Service', 'ui.router'])
             .then(handleRequest, handleRequest)
      }
 
-    self.getQuote = function() {
-        user.getQuote()
-        .then(handleRequest, handleRequest)
-    }
-
-    /*self.getExercises = function() {
-        exercise.getExercises()
-        .then(handleRequest, handleRequest)
-    }*/
     self.getExercises = function() {
         exercise.getExercises()
         .then(function(result){
-            //$scope.states = result.data;
-            console.log('output is:' + result.data);
+            //console.log('output is:' + result.data);
             var exercise1 = result.data[0];
-            console.log('exercise1 is ' + JSON.stringify(exercise1));
+            //console.log('exercise1 is ' + JSON.stringify(exercise1));
             $scope.exercises = result.data;
+        })
+        .catch(function(result){
+            $scope.exercises = {};
         });
-        
-        
-        console.log('output is:' + handleRequest.data);
     }
 
     self.logout = function() {

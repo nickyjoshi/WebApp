@@ -1,7 +1,6 @@
 angular.module('App.Service',['App.Factory'])
-.constant('APILocal','http://localhost:9081')
-.constant('API', 'http://test-routes.herokuapp.com')
-.constant('headerContent',{'Content-Type':'application/x-www-form-urlencoded;charset=utf-8;'})
+.constant('API','http://localhost:9081')
+.constant('headerContent',{'Content-Type':'application/x-www-form-urlencoded'})
 .service('authService', ["$window", function($window){
     
     this.parseJWT = function(token){
@@ -37,25 +36,24 @@ angular.module('App.Service',['App.Factory'])
 }])
 .service('userService', ["$http", "API", "headerContent", function($http, API, headerContent){
 
-    this.getQuote = function(){
-        return $http.get(API + '/auth/quote')
-    }
     this.register = function(username, password){
 
         var data = "username="+username + "&password=" + password;
         var config = {headers : headerContent}
-        var promiseObject = $http.post((API + '/auth/register'), data, config)
+        var promiseObject = $http.post((API + '/user/register'), data, config)
         return promiseObject;
     }
     this.login = function(username, password){
         var data = "username="+username + "&password=" + password;
         var config = {headers : headerContent}
-        var promiseObject = $http.post((API + '/auth/login'), data, config)
+        var promiseObject = $http.post((API + '/user/login'), data, config)
         return promiseObject;
     }
 }])
-.service('exerciseService',["$http", "APILocal", "headerContent", function($http, APILocal, headerContent){
+.service('exerciseService',["$http", "API", "headerContent", function($http, API, headerContent){
+    
     this.getExercises = function(){
-        return $http.get(APILocal + '/exercises')
+        return $http.get(API + '/exercises')
     }
+
 }]);

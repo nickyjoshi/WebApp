@@ -28,10 +28,21 @@ angular.module('app',['App.Service', 'ui.router'])
             .then(handleRequest, handleRequest);
     }
     
-    self.register = function() {
+    /*self.register = function() {
         user.register(self.username, self.password)
             .then(handleRequest, handleRequest)
+     }*/
+
+     self.register = function() {
+        user.register(self.username, self.password)
+            .then(function(result){
+                self.message = "User registered successfully";
+            })
+            .catch(function(result){
+                self.message = "User not registered successfully";
+            })
      }
+
 
     self.getExercises = function() {
         exercise.getExercises()

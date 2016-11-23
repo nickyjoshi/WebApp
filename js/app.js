@@ -1,14 +1,4 @@
-angular.module('app',['App.Service', 'ui.router'])
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    $stateProvider.state('home', {
-        url : '',
-        templateUrl : 'pages/home.html'
-    })
-    $stateProvider.state('list', {
-        url : '/list',
-        templateUrl : 'pages/list.html'
-    })
-}])
+angular.module('app',['App.Config','App.Service'])
 .controller('Main', ["userService", "authService", "exerciseService", "$scope", function(user, auth, exercise, $scope){
 
    var self = this;
